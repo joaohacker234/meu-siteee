@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mega Enciclopédia da Água: Vida, Ciência, Energia e Sustentabilidade</title>
+  <style>
+    :root {
+      --primary: #0077b6;
+      --primary-dark: #03045e;
+      --secondary: #00b4d8;
+      --accent: #90e0ef;
+      --bg: #f4f7f6;
+      --card: #ffffff;
+      --text: #1d3557;
+      --text-muted: #457b9d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.8;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    /* Painel de Acessibilidade / Leitor de Voz */
+    .accessibility-bar {
+      background-color: #ffb703;
+      color: #000;
+      padding: 12px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .accessibility-bar button {
+      width: auto;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      background-color: var(--primary-dark);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .accessibility-bar button:hover {
+      background-color: #000;
+    }
+
+    /* Cabeçalho Principal */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: var(--accent);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Menu de Navegação */
+    nav {
+      background-color: var(--primary-dark);
+      padding: 15px;
+      position: sticky;
+      top: 48px;
+      z-index: 100;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Layout do Conteúdo */
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: var(--card);
+      padding: 40px;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 2.2rem;
+      border-bottom: 4px solid var(--secondary);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 30px 0 15px 0;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    /* Grids e Galeria de Imagens */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .image-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-card p {
+      padding: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+
+    th, td {
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    /* Caixas de Destaque */
+    .highlight-box {
+      background-color: #e0f7fa;
+      border-left: 6px solid var(--primary);
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+
+    /* Estilo da Calculadora Avançada */
+    .calculator-container {
+      background: linear-gradient(135deg, #eef9ff, #d8f3dc);
+      padding: 35px;
+      border-radius: 12px;
+      border: 2px solid var(--secondary);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #bce0fd;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .calc-results {
+      margin-top: 25px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Estilos do Mini-Game */
+    .game-container {
+      background: linear-gradient(135deg, #03045e, #0077b6);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .game-status {
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .quiz-btn {
+      padding: 14px;
+      font-size: 1.05rem;
+      background-color: white;
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.1s, background 0.2s;
+    }
+
+    .quiz-btn:hover {
+      background-color: var(--accent);
+      transform: scale(1.01);
+    }
+
+    .quiz-feedback {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    .game-shortcut-tip {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-top: 15px;
+    }
+
+    footer {
+      background-color: var(--primary-dark);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ELEMENTO DE ÁUDIO: NOME DO ARQUIVO MP3 -->
+  <audio id="musicaXakinha" preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- BARRA DE ACESSIBILIDADE POR ÁUDIO -->
+  <div class="accessibility-bar" aria-label="Controles de Leitura de Áudio">
+    <strong>Leitor de Acessibilidade:</strong>
+    <button onclick="lerSiteInteiro()">Ouvir Site Inteiro</button>
+    <button onclick="pausarAudio()">Pausar</button>
+    <button onclick="pararAudio()">Parar</button>
+    <button onclick="tocarMusicaXakinha()" style="background-color: #38b000;">🎵 Tocar Minha Música (Tecla E)</button>
+  </div>
+
+  <!-- CABEÇALHO PRINCIPAL -->
+  <header>
+    <h1>Enciclopédia Geral da Água</h1>
+    <p>Uma análise profunda sobre a molécula da vida, os ecossistemas, a física dos oceanos e a matriz energética global</p>
+  </header>
+
+  <!-- NAVEGAÇÃO -->
+  <nav>
+    <a href="#modulo1">1. Fisiologia</a>
+    <a href="#modulo2">2. Química</a>
+    <a href="#modulo3">3. Ecologia</a>
+    <a href="#modulo4">4. Energia</a>
+    <a href="#modulo5">5. Calculadora</a>
+    <a href="#modulo6">6. Preservação</a>
+    <a href="#modulo7">7. Mini-Game</a>
+  </nav>
+
+  <main id="conteudo-principal">
+
+    <!-- MÓDULO 1: FISIOLOGIA HUMANA -->
+    <section id="modulo1">
+      <h2>Módulo 1: O Papel da Água na Fisiologia Humana</h2>
+      <p>A água é o solvente universal essencial para a vida celular. No corpo humano adulto, representa aproximadamente 60% do peso total, variando conforme idade, sexo e percentual de massa muscular. Todas as reações bioquímicas conhecidas necessitam do meio aquoso para ocorrer.</p>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=600&q=80" alt="Fotografia de água pura caindo em um copo transparente">
+          <p><strong>Hidratação Pura:</strong> Absorção rápida no trato gastrointestinal para reposição celular.</p>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" alt="Fotografia de uma pessoa praticando esportes ao ar livre">
+          <p><strong>Termorregulação:</strong> O suor evapora na pele dissipando o calor interno corporal.</p>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Ilustração médica do sistema circulatório humano">
+          <p><strong>Fluxo Sanguíneo:</strong> O plasma sanguíneo é composto por 90% de água pura.</p>
+        </div>
+      </div>
+
+      <h3>Funções Biológicas Detalhadas:</h3>
+      <ul>
+        <li><strong>Transporte celular:</strong> O sangue carrega oxigênio, nutrientes, hormônios e enzimas dissolvidos em base aquosa.</li>
+        <li><strong>Manutenção Térmica:</strong> O alto calor específico da água permite absorver variações de temperatura sem oscilações bruscas no organismo.</li>
+        <li><strong>Proteção e Lubrificação:</strong> O líquido cefalorraquidiano protege o cérebro, enquanto o fluido sinovial previne atrito entre os ossos.</li>
+        <li><strong>Desintoxicação Renal:</strong> Os rins filtram o sangue continuamente, eliminando toxinas através da urina diluída.</li>
+      </ul>
+
+      <h3>Distribuição Percentual de Água por Tecido Corporal:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Órgão / Tecido</th>
+            <th>Porcentagem de Água (%)</th>
+            <th>Função Principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Cérebro e Sistema Nervoso</td><td>75%</td><td>Condução de impulsos elétricos nervosos</td></tr>
+          <tr><td>Plasma Sanguíneo</td><td>92%</td><td>Transporte de oxigênio e anticorpos</td></tr>
+          <tr><td>Músculos Esqueléticos</td><td>75%</td><td>Contração muscular e armazenamento de glicogênio</td></tr>
+          <tr><td>Rins</td><td>83%</td><td>Filtragem e controle osmótico</td></tr>
+          <tr><td>Ossos</td><td>22%</td><td>Rigidez mineral e suporte celular</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MÓDULO 2: PROPRIEDADES FÍSICO-QUÍMICAS -->
+    <section id="modulo2">
+      <h2>Módulo 2: Propriedades Físico-Químicas da Água</h2>
+      <p>A molécula de água é composta por dois átomos de hidrogênio e um de oxigênio unidos por ligações covalentes polares. A assimetria da molécula gera pontes de hidrogênio, concedendo características únicas no universo físico.</p>
+
+      <div class="highlight-box">
+        <strong>Curiosidade Física: Anomalia Térmica da Água</strong>
+        <p>A maioria das substâncias se contrai ao congelar, mas a água se expande ao passar do estado líquido para o sólido. O gelo é menos denso que a água líquida, o que faz com que ele flutue. Isso garante a sobrevivência de ecossistemas marinhos sob mares congelados!</p>
+      </div>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=80" alt="Fotografia em close da superfície da água mostrando a tensão superficial">
+          <p><strong>Tensão Superficial:</strong> Força coesiva entre as moléculas que cria uma película no líquido.</p>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80" alt="Fotografia de blocos de gelo flutuando na água do mar">
+          <p><strong>Expansão Térmica:</strong> O gelo possui densidade menor que a água em estado líquido.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 3: ECOLOGIA E CICLO GLOBAL -->
+    <section id="modulo3">
+      <h2>Módulo 3: Ciclo Hidrológico e Ecologia Global</h2>
+      <p>O ciclo da água é a circulação contínua do recurso entre a atmosfera, a litosfera e a biosfera, movido pela radiação solar e pela gravidade terrestre.</p>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Fotografia do oceano sob um céu com nuvens em evaporação">
+          <p><strong>Evaporação & Condensação:</strong> Formação de nuvens a partir dos oceanos.</p>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?auto=format&fit=crop&w=600&q=80" alt="Fotografia de chuva caindo sobre uma floresta verde">
+          <p><strong>Precipitação:</strong> Retorno da água doce para os ecossistemas terrestres.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 4: ENERGIA HÍDRICA -->
+    <section id="modulo4">
+      <h2>Módulo 4: Fontes de Energia Derivadas da Água</h2>
+      <p>A energia contida no movimento ou na composição molecular da água é uma das bases mais sólidas da matriz energética sustentável do planeta.</p>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Fotografia de uma usina hidrelétrica com água fluindo em alta velocidade">
+          <p><strong>Energia Hidrelétrica:</strong> A força da água represada gira turbinas de grande porte.</p>
+        </div>
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Fotografia de tecnologia de energia renovável">
+          <p><strong>Hidrogênio Verde:</strong> Quebra da molécula de água por eletrólise para combustível limpo.</p>
+        </div>
+      </div>
+
+      <h3>Principais Modelos de Geração de Energia:</h3>
+      <ol>
+        <li><strong>Hidrelétrica Tradicional:</strong> Converte energia potencial gravitacional em energia mecânica nas turbinas e, em seguida, em eletricidade.</li>
+        <li><strong>Energia Maremotriz:</strong> Aproveita as variações do nível do mar (alta e baixa maré) para movimentar turbinas costeiras.</li>
+        <li><strong>Energia Undimotriz:</strong> Captura a energia mecânica gerada pelo movimento contínuo das ondas do mar.</li>
+        <li><strong>Energia Térmica dos Oceanos:</strong> Utiliza a diferença de temperatura entre as águas superficiais quentes e as águas profundas frias para mover geradores.</li>
+      </ol>
+    </section>
+
+    <!-- MÓDULO 5: BALANÇA DE HIDRATAÇÃO -->
+    <section id="modulo5">
+      <h2>Módulo 5: Balança Diária de Consumo de Água</h2>
+      <p>A taxa exata de ingestão varia com base em múltiplos fatores: massa corporal, nível de atividade, clima e temperatura média do ambiente.</p>
+
+      <div class="calculator-container">
+        <h3>Calculadora Personalizada de Necessidade Hídrica</h3>
+        <p style="margin-bottom: 20px;">Preencha os dados abaixo para receber sua meta diária de ingestão:</p>
+
+        <form id="hydroCalc" onsubmit="event.preventDefault(); processarCalculo();">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="calcPeso">Seu Peso (kg):</label>
+              <input type="number" id="calcPeso" placeholder="Ex: 70" min="1" max="250" required>
+            </div>
+            <div class="form-group">
+              <label for="calcAtividade">Nível de Exercício:</label>
+              <select id="calcAtividade">
+                <option value="35">Leve ou Sedentário (35 mL por kg)</option>
+                <option value="40">Moderado - Treino leve (40 mL por kg)</option>
+                <option value="45">Intenso - Treino pesado (45 mL por kg)</option>
+                <option value="50">Atleta de Alta Performance (50 mL por kg)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="calcClima">Clima Local:</label>
+              <select id="calcClima">
+                <option value="0">Ameno ou Frio (+0 mL)</option>
+                <option value="300">Quente ou Húmido (+300 mL)</option>
+                <option value="600">Muito Quente ou Seco (+600 mL)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">Calcular Meta do Dia</button>
+        </form>
+
+        <div id="calcOutput" class="calc-results">
+          <h4 style="color: var(--primary-dark); font-size: 1.3rem;">Seu Plano de Hidratação Personalizado:</h4>
+          <p id="outText" style="font-size: 1.1rem; margin-top: 10px;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 6: SUSTENTABILIDADE -->
+    <section id="modulo6">
+      <h2>Módulo 6: Preservação, Acessibilidade e Sustentabilidade</h2>
+      <p>Apesar da abundância aparente, apenas 0,75% de toda a água do planeta é potável e acessível para consumo humano direto. A gestão consciente e o combate à poluição são cruciais para as próximas gerações.</p>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=600&q=80" alt="Fotografia de rio limpo cercado por floresta preservada">
+          <p><strong>Preservação dos Mantos Freáticos:</strong> Manutenção da vegetação nativa para proteção dos rios.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 7: MINI-GAME EDUCATIVO -->
+    <section id="modulo7">
+      <h2>Módulo 7: Desafio do Guardião da Água</h2>
+      <p>Teste os conhecimentos adquiridos ao longo da leitura respondendo às perguntas do quiz interativo abaixo!</p>
+
+      <div class="game-container">
+        <div class="game-status">
+          <span>Pergunta: <span id="gameCurrent">1</span> / <span id="gameTotal">5</span></span>
+          <span>Pontuação: <span id="gameScore">0</span></span>
+        </div>
+
+        <h3 id="gameQuestion" style="color: white; margin-top: 0;">Carregando pergunta...</h3>
+
+        <div id="gameOptions" class="quiz-options"></div>
+
+        <div id="gameFeedback" class="quiz-feedback"></div>
+
+        <button id="btnNextGame" class="btn-submit" style="display: none; margin-top: 20px;" onclick="proximaPergunta()">Próxima Pergunta</button>
+        <button id="btnRestartGame" class="btn-submit" style="background-color: #ffb703; color: #000; margin-top: 15px;" onclick="reiniciarJogo()">Reiniciar Jogo (Pressione R)</button>
+        <div class="game-shortcut-tip">Dica: Pressione a tecla <strong>R</strong> para reiniciar o jogo e a tecla <strong>E</strong> para tocar a música!</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Projeto Educativo - Enciclopédia Geral da Água | Desenvolvido com Recursos de Acessibilidade e Interatividade</p>
+  </footer>
+
+  <!-- SCRIPT DE LÓGICA, ÁUDIO E MINI-GAME -->
+  <script>
+    // ----------------------------------------------------
+    // FUNÇÃO PARA TOCAR A MÚSICA
+    // ----------------------------------------------------
+    function tocarMusicaXakinha() {
+      const audio = document.getElementById('musicaXakinha');
+
+      if (audio.paused) {
+        audio.currentTime = 0; 
+        audio.play().then(() => {
+          console.log("Música tocando com sucesso!");
+        }).catch(error => {
+          console.error("Erro ao reproduzir áudio:", error);
+          alert("O navegador bloqueou a reprodução. Dê um clique em qualquer lugar da tela e tente novamente.");
+        });
+      } else {
+        audio.pause();
+      }
+    }
+
+    // Libera o áudio automaticamente no primeiro clique dado na página
+    document.addEventListener('click', () => {
+      const audio = document.getElementById('musicaXakinha');
+      if (audio.paused && audio.currentTime === 0) {
+        audio.play().then(() => {
+          audio.pause(); // Toca por 1 milissegundo e pausa só para destravar o navegador
+        }).catch(() => {});
+      }
+    }, { once: true });
+
+    // ----------------------------------------------------
+    // SÍNTESE DE VOZ (LEITOR DE ÁUDIO)
+    // ----------------------------------------------------
+    const synth = window.speechSynthesis;
+    let utterance = null;
+
+    function lerSiteInteiro() {
+      synth.cancel();
+
+      const headerText = document.querySelector('header').innerText;
+      const mainText = document.getElementById('conteudo-principal').innerText;
+      
+      let altTexts = "";
+      const imagens = document.querySelectorAll('img');
+      imagens.forEach((img, index) => {
+        if (img.alt) {
+          altTexts += ` Imagem ${index + 1}: ${img.alt}.`;
+        }
+      });
+
+      const textoCompleto = `${headerText}. ${altTexts}. ${mainText}`;
+
+      utterance = new SpeechSynthesisUtterance(textoCompleto);
+      utterance.lang = 'pt-BR';
+      utterance.rate = 1.0;
+
+      const voices = synth.getVoices();
+      const ptVoice = voices.find(voice => voice.lang.includes('pt'));
+      if (ptVoice) {
+        utterance.voice = ptVoice;
+      }
+
+      synth.speak(utterance);
+    }
+
+    function pausarAudio() {
+      if (synth.speaking && !synth.paused) {
+        synth.pause();
+      } else if (synth.paused) {
+        synth.resume();
+      }
+    }
+
+    function pararAudio() {
+      synth.cancel();
+    }
+
+    // ----------------------------------------------------
+    // CALCULADORA DE HIDRATAÇÃO
+    // ----------------------------------------------------
+    function processarCalculo() {
+      const peso = parseFloat(document.getElementById('calcPeso').value);
+      const taxaAtividade = parseFloat(document.getElementById('calcAtividade').value);
+      const adicionalClima = parseFloat(document.getElementById('calcClima').value);
+      
+      const outBox = document.getElementById('calcOutput');
+      const outText = document.getElementById('outText');
+
+      if (isNaN(peso) || peso <= 0) {
+        alert("Por favor, informe um número válido para o peso corporal.");
+        return;
+      }
+
+      const totalMl = (peso * taxaAtividade) + adicionalClima;
+      const totalLitros = (totalMl / 1000).toFixed(2);
+      const copos200 = Math.ceil(totalMl / 200);
+      const copos300 = Math.ceil(totalMl / 300);
+      const garrafas500 = (totalMl / 500).toFixed(1);
+
+      const mensagemResultado = `Com base no seu peso corporal de ${peso} quilos e no seu nível de exposição diária, sua meta recomendada é de ${totalLitros} Litros, que equivalem a ${totalMl} ml por dia.`;
+
+      outText.innerHTML = `
+        Com base no seu peso corporal de <strong>${peso} kg</strong> e no seu nível de exposição diária:<br><br>
+        • Meta recomendada: <span style="color: #0077b6; font-size: 1.3em;"><strong>${totalLitros} Litros</strong></span> (${totalMl} mL) por dia.<br><br>
+        <strong>Distribuição diária prática:</strong><br>
+        - Aprox. <strong>${garrafas500} garrafinhas</strong> de 500 mL.<br>
+        - Aprox. <strong>${copos300} copos grandes</strong> de 300 mL.<br>
+        - Aprox. <strong>${copos200} copos comuns</strong> de 200 mL.
+      `;
+
+      outBox.style.display = 'block';
+
+      synth.cancel();
+      const resultadoUtterance = new SpeechSynthesisUtterance(mensagemResultado);
+      resultadoUtterance.lang = 'pt-BR';
+      synth.speak(resultadoUtterance);
+    }
+
+    // ----------------------------------------------------
+    // MINI-GAME / QUIZ
+    // ----------------------------------------------------
+    const perguntasGame = [
+      {
+        pergunta: "Qual a porcentagem aproximada de água no corpo de um adulto?",
+        opcoes: ["30%", "60%", "85%", "95%"],
+        correta: 1
+      },
+      {
+        pergunta: "Por que o gelo flutua na água líquida?",
+        opcoes: [
+          "Porque o gelo é mais pesado",
+          "Porque a água se contrai ao congelar",
+          "Porque o gelo se expande e fica menos denso",
+          "Por causa do sal presente na água"
+        ],
+        correta: 2
+      },
+      {
+        pergunta: "Qual porcentagem de toda a água do planeta é doce e acessível?",
+        opcoes: ["Cerca de 0,75%", "Cerca de 10%", "Cerca de 25%", "Cerca de 50%"],
+        correta: 0
+      },
+      {
+        pergunta: "O que é 'Hidrogênio Verde'?",
+        opcoes: [
+          "Água misturada com plantas",
+          "Combustível obtido pela quebra da água por eletrólise",
+          "Gás extraído do fundo dos oceanos",
+          "Tipo de fertilizante líquido"
+        ],
+        correta: 1
+      },
+      {
+        pergunta: "Qual destes tecidos corporais contém a maior porcentagem de água?",
+        opcoes: ["Ossos", "Plasma Sanguíneo", "Músculos", "Cérebro"],
+        correta: 1
+      }
+    ];
+
+    let indiceAtual = 0;
+    let pontuacao = 0;
+
+    function carregarPergunta() {
+      const q = perguntasGame[indiceAtual];
+      document.getElementById('gameCurrent').innerText = indiceAtual + 1;
+      document.getElementById('gameTotal').innerText = perguntasGame.length;
+      document.getElementById('gameQuestion').innerText = q.pergunta;
+      document.getElementById('gameFeedback').innerText = "";
+      document.getElementById('btnNextGame').style.display = 'none';
+
+      const optionsContainer = document.getElementById('gameOptions');
+      optionsContainer.innerHTML = "";
+
+      q.opcoes.forEach((opcao, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-btn';
+        btn.innerText = opcao;
+        btn.onclick = () => verificarResposta(i);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function verificarResposta(indiceSelecionado) {
+      const q = perguntasGame[indiceAtual];
+      const botoes = document.querySelectorAll('.quiz-btn');
+      
+      botoes.forEach(b => b.disabled = true);
+
+      let mensagem = "";
+
+      if (indiceSelecionado === q.correta) {
+        pontuacao += 10;
+        document.getElementById('gameScore').innerText = pontuacao;
+        document.getElementById('gameFeedback').innerHTML = "<span style='color: #81c784;'>Resposta Correta! +10 Pontos</span>";
+        mensagem = "Resposta Correta!";
+      } else {
+        document.getElementById('gameFeedback').innerHTML = `<span style='color: #e57373;'>Incorreto! A resposta certa era: "${q.opcoes[q.correta]}"</span>`;
+        mensagem = `Incorreto! A resposta correta é ${q.opcoes[q.correta]}`;
+      }
+
+      synth.cancel();
+      const feedbackUtterance = new SpeechSynthesisUtterance(mensagem);
+      feedbackUtterance.lang = 'pt-BR';
+      synth.speak(feedbackUtterance);
+
+      document.getElementById('btnNextGame').style.display = 'block';
+    }
+
+    function proximaPergunta() {
+      indiceAtual++;
+      if (indiceAtual < perguntasGame.length) {
+        carregarPergunta();
+      } else {
+        finalizarJogo();
+      }
+    }
+
+    function finalizarJogo() {
+      document.getElementById('gameQuestion').innerText = "Parabéns! Você concluiu o Quiz da Água!";
+      document.getElementById('gameOptions').innerHTML = "";
+      document.getElementById('btnNextGame').style.display = 'none';
+
+      const msgFinal = `Jogo finalizado! Sua pontuação total foi de ${pontuacao} pontos. Pressione R para jogar novamente.`;
+      document.getElementById('gameFeedback').innerHTML = `<h3>${msgFinal}</h3>`;
+
+      synth.cancel();
+      const finalUtterance = new SpeechSynthesisUtterance(msgFinal);
+      finalUtterance.lang = 'pt-BR';
+      synth.speak(finalUtterance);
+    }
+
+    function reiniciarJogo() {
+      indiceAtual = 0;
+      pontuacao = 0;
+      document.getElementById('gameScore').innerText = pontuacao;
+      carregarPergunta();
+
+      const msgReiniciar = "Jogo reiniciado.";
+      synth.cancel();
+      const reUtterance = new SpeechSynthesisUtterance(msgReiniciar);
+      reUtterance.lang = 'pt-BR';
+      synth.speak(reUtterance);
+    }
+
+    // ----------------------------------------------------
+    // EVENTOS DE TECLADO (ATALHOS R E E)
+    // ----------------------------------------------------
+    document.addEventListener('keydown', (event) => {
+      const activeElement = document.activeElement;
+      const isInputting = activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'SELECT';
+
+      if (!isInputting) {
+        // Tecla R: Reiniciar o jogo
+        if (event.key === 'r' || event.key === 'R') {
+          event.preventDefault();
+          reiniciarJogo();
+        }
+        
+        // Tecla E: Tocar a música
+        if (event.key === 'e' || event.key === 'E') {
+          event.preventDefault();
+          tocarMusicaXakinha();
+        }
+      }
+    });
+
+    window.onload = () => {
+      carregarPergunta();
+    };
+  </script>
+
+</body>
+</html>
